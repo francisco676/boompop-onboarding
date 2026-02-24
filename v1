@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BoomPop x RallyUp — Campaign Plan</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a14; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const Card = ({ children, style }) => (
+      <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 14, padding: "24px 28px", ...style }}>{children}</div>
+    );
+
+    const Label = ({ children, color }) => (
+      <h4 style={{ fontSize: 11, color, letterSpacing: 2, textTransform: "uppercase", margin: "0 0 10px", fontWeight: 700 }}>{children}</h4>
+    );
+
+    const BoomPopIcon = ({ size = 40 }) => (
+      <svg width={size} height={size} viewBox="0 0 100 100">
+        {[0,60,120,180,240,300].map((a,i) => {
+          const r = (a * Math.PI) / 180;
+          return <line key={i} x1="50" y1="50" x2={50+Math.cos(r)*32} y2={50+Math.sin(r)*32} stroke="#6366f1" strokeWidth="18" strokeLinecap="round" />;
+        })}
+        <circle cx="50" cy="50" r="14" fill="#6366f1" />
+      </svg>
+    );
+
+    const RallyUpIcon = () => (
+      <div style={{ width: 52, height: 52, borderRadius: 12, background: "linear-gradient(135deg, #4f8ff7 0%, #7c5ce0 100%)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <polygon points="11,5 18,2 18,22 11,19" stroke="white" strokeWidth="1.8" strokeLinejoin="round" fill="none"/>
+          <rect x="5" y="8.5" width="6" height="7" rx="1" stroke="white" strokeWidth="1.8" fill="none"/>
+          <path d="M5 15.5L5 18.5C5 19.6 5.9 20.5 7 20.5L7 20.5C8.1 20.5 9 19.6 9 18.5L9 15.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
+        </svg>
+      </div>
+    );
+
+    const slides = [
+      // TITLE
+      () => (
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "100%", background: "linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)", padding: "60px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", top: -80, right: -80, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)" }} />
+          <div style={{ position: "absolute", bottom: -60, left: -60, width: 250, height: 250, borderRadius: "50%", background: "radial-gradient(circle, rgba(236,72,153,0.1) 0%, transparent 70%)" }} />
+          <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 20 }}>
+            <RallyUpIcon />
+            <span style={{ fontSize: 22, color: "#475569" }}>×</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <BoomPopIcon />
+              <span style={{ fontSize: 22, fontWeight: 800, color: "#fff", letterSpacing: -0.5 }}>BoomPop</span>
+            </div>
+          </div>
+          <h1 style={{ fontSize: 44, fontWeight: 800, color: "#fff", margin: "0 0 16px", lineHeight: 1.15, maxWidth: 700 }}>Employee Advocacy<br />Launch Plan</h1>
+          <div style={{ width: 60, height: 3, background: "linear-gradient(90deg, #818cf8, #ec4899)", borderRadius: 2, margin: "0 auto 24px" }} />
+          <p style={{ fontSize: 17, color: "#94a3b8", maxWidth: 520, lineHeight: 1.6, margin: 0 }}>3 LinkedIn campaigns designed to activate BoomPop's team, drive pipeline, and own the conversation around in-person events.</p>
+          <div style={{ marginTop: 48, display: "flex", gap: 32, color: "#64748b", fontSize: 13 }}>
+            <span>📅 Onboarding: Thursday, Feb 26</span>
+            <span>👥 Initial Cohort: 15–20 employees</span>
+          </div>
+        </div>
+      ),
+
+      // WHY NOW
+      () => (
+        <div style={{ height: "100%", background: "#0f0f1a", padding: "48px 56px", display: "flex", flexDirection: "column" }}>
+          <p style={{ fontSize: 12, letterSpacing: 3, color: "#818cf8", fontWeight: 600, textTransform: "uppercase", margin: "0 0 8px" }}>Context</p>
+          <h2 style={{ fontSize: 34, fontWeight: 700, color: "#fff", margin: "0 0 32px" }}>Why Employee Advocacy, Why Now</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, flex: 1 }}>
+            {[
+              { icon: "💰", title: "$41M Raised", desc: "Nov 2025 round led by Wing VC with A-Rod, ex-DoorDash president, and more. The world is watching." },
+              { icon: "🏆", title: "Inc. 5000 #7 Software", desc: "3,073% three-year growth. BoomPop is a rocketship — employees should be telling that story." },
+              { icon: "🎙️", title: "Healey on GTMnow", desc: 'Jan 2026 podcast: "Events are the #1 GTM method for scaled AI businesses." Perfect content to amplify.' },
+              { icon: "📈", title: "450+ Clients", desc: "Google, Netflix, Amazon, Hims & Hers. Massive social proof that employees can weave into personal posts." },
+            ].map((c, i) => (
+              <Card key={i}>
+                <div style={{ fontSize: 28, marginBottom: 10 }}>{c.icon}</div>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#e2e8f0", margin: "0 0 8px" }}>{c.title}</h3>
+                <p style={{ fontSize: 13, color: "#94a3b8", margin: 0, lineHeight: 1.55 }}>{c.desc}</p>
+              </Card>
+            ))}
+          </div>
+          <p style={{ fontSize: 13, color: "#64748b", margin: "24px 0 0", textAlign: "center" }}>BoomPop's ICP lives on LinkedIn — EAs, ops leads, event planners. Every employee post puts BoomPop in front of buyers.</p>
+        </div>
+      ),
+
+      // OVERVIEW
+      () => (
+        <div style={{ height: "100%", background: "#0f0f1a", padding: "48px 56px", display: "flex", flexDirection: "column" }}>
+          <p style={{ fontSize: 12, letterSpacing: 3, color: "#818cf8", fontWeight: 600, textTransform: "uppercase", margin: "0 0 8px" }}>The Plan</p>
+          <h2 style={{ fontSize: 34, fontWeight: 700, color: "#fff", margin: "0 0 12px" }}>3 Campaigns. 6 Weeks. Real Pipeline.</h2>
+          <p style={{ fontSize: 14, color: "#94a3b8", margin: "0 0 32px", maxWidth: 600 }}>Each campaign targets a different angle — seasonal urgency, thought leadership, and ICP pain point — so employee feeds stay fresh and non-repetitive.</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16, flex: 1 }}>
+            {[
+              { num: "01", color: "#34d399", title: "Spring Offsite Season Is Here", subtitle: "Seasonal urgency — book before it's too late", dates: "Mar 3 – Mar 21", goal: "Drive awareness & FOMO" },
+              { num: "02", color: "#818cf8", title: "AI Killed Your Outbound", subtitle: "Events are the new GTM channel", dates: "Mar 10 – Mar 28", goal: "Thought leadership & credibility" },
+              { num: "03", color: "#f472b6", title: "Confessions of an Accidental Planner", subtitle: "Speak directly to BoomPop's ICP", dates: "Mar 24 – Apr 11", goal: "Inbound pipeline & empathy" },
+            ].map((c, i) => (
+              <Card key={i} style={{ padding: "22px 28px", display: "flex", alignItems: "center", gap: 24 }}>
+                <span style={{ fontSize: 32, fontWeight: 800, color: c.color, fontFamily: "monospace", minWidth: 48 }}>{c.num}</span>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#e2e8f0", margin: "0 0 4px" }}>{c.title}</h3>
+                  <p style={{ fontSize: 13, color: "#94a3b8", margin: 0 }}>{c.subtitle}</p>
+                </div>
+                <div style={{ textAlign: "right" }}>
+                  <span style={{ fontSize: 12, color: "#64748b", display: "block" }}>{c.dates}</span>
+                  <span style={{ fontSize: 12, color: c.color, fontWeight: 600, marginTop: 4, display: "block" }}>{c.goal}</span>
+                </div>
+              </Card>
+            ))}
+          </div>
+          <div style={{ marginTop: 24, background: "rgba(129,140,248,0.08)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: 10, padding: "14px 20px", display: "flex", alignItems: "center", gap: 12 }}>
+            <span style={{ fontSize: 16 }}>💡</span>
+            <span style={{ fontSize: 13, color: "#c7d2fe" }}>Campaigns overlap slightly so there's always active employee content in the feed. Staggered posting prevents fatigue.</span>
+          </div>
+        </div>
+      ),
+
+      // CAMPAIGN 1
+      () => (
+        <div style={{ height: "100%", background: "#0f0f1a", padding: "44px 56px", display: "flex", flexDirection: "column", overflow: "auto" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 6 }}>
+            <span style={{ background: "#34d399", color: "#0f0f1a", fontSize: 12, fontWeight: 800, padding: "4px 12px", borderRadius: 6 }}>CAMPAIGN 01</span>
+            <span style={{ fontSize: 12, color: "#64748b" }}>Mar 3 – Mar 21, 2026</span>
+          </div>
+          <h2 style={{ fontSize: 28, fontWeight: 700, color: "#fff", margin: "0 0 6px" }}>Spring Offsite Season Is Here</h2>
+          <p style={{ fontSize: 14, color: "#34d399", margin: "0 0 24px", fontWeight: 500 }}>Book your offsite before it's too late</p>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#34d399">Why This Campaign</Label>
+              <p style={{ fontSize: 13, color: "#cbd5e1", margin: 0, lineHeight: 1.6 }}>Q2/Q3 venues are filling up fast. Airfare climbs 15–20% inside 90 days. Every week companies wait costs real money. This is the highest-urgency moment of the year for BoomPop's buyers.</p>
+            </Card>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#34d399">Post Angles</Label>
+              <ul style={{ fontSize: 13, color: "#cbd5e1", margin: 0, paddingLeft: 16, lineHeight: 1.8 }}>
+                <li>Client story: waited too long, paid the price</li>
+                <li>Hot take: spring is the best offsite season</li>
+                <li>How to pitch your CFO on offsite budget</li>
+                <li>Personal offsite story that changed their team</li>
+              </ul>
+            </Card>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#34d399">Assets to Upload</Label>
+              <ul style={{ fontSize: 13, color: "#cbd5e1", margin: 0, paddingLeft: 16, lineHeight: 1.8 }}>
+                <li>BoomPop platform page link</li>
+                <li>Blog: "5 Trends in Event Planning"</li>
+                <li>Stat graphic: airfare + venue data</li>
+                <li>Photos from recent offsites (Napa, Sedona, Austin)</li>
+              </ul>
+            </Card>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#34d399">Suggested Users</Label>
+              <p style={{ fontSize: 13, color: "#cbd5e1", margin: 0, lineHeight: 1.6 }}><strong style={{ color: "#34d399" }}>Wave 1:</strong> Sales team — they're already in these conversations with prospects daily.<br /><br /><strong style={{ color: "#34d399" }}>Wave 2:</strong> Event planners + marketing team in week 2.</p>
+            </Card>
+          </div>
+        </div>
+      ),
+
+      // CAMPAIGN 2
+      () => (
+        <div style={{ height: "100%", background: "#0f0f1a", padding: "44px 56px", display: "flex", flexDirection: "column", overflow: "auto" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 6 }}>
+            <span style={{ background: "#818cf8", color: "#0f0f1a", fontSize: 12, fontWeight: 800, padding: "4px 12px", borderRadius: 6 }}>CAMPAIGN 02</span>
+            <span style={{ fontSize: 12, color: "#64748b" }}>Mar 10 – Mar 28, 2026</span>
+          </div>
+          <h2 style={{ fontSize: 28, fontWeight: 700, color: "#fff", margin: "0 0 6px" }}>AI Killed Your Outbound</h2>
+          <p style={{ fontSize: 14, color: "#818cf8", margin: "0 0 24px", fontWeight: 500 }}>In-person events are the highest-ROI channel nobody's talking about</p>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#818cf8">Why This Campaign</Label>
+              <p style={{ fontSize: 13, color: "#cbd5e1", margin: 0, lineHeight: 1.6 }}>Healey's GTMnow podcast (Jan 28, 2026) made waves: events are the #1 GTM channel for scaled AI companies. AI flooding digital channels = trust deficit online. In-person is the antidote. This is BoomPop's core thesis — employees should be amplifying it.</p>
+            </Card>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#818cf8">Post Angles</Label>
+              <ul style={{ fontSize: 13, color: "#cbd5e1", margin: 0, paddingLeft: 16, lineHeight: 1.8 }}>
+                <li>My inbox is 90% AI-generated noise now</li>
+                <li>A deal that only happened face-to-face</li>
+                <li>Why smart teams are shifting budget to events</li>
+                <li>Contrarian take: "everything remote" is wrong</li>
+              </ul>
+            </Card>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#818cf8">Assets to Upload</Label>
+              <ul style={{ fontSize: 13, color: "#cbd5e1", margin: 0, paddingLeft: 16, lineHeight: 1.8 }}>
+                <li>GTMnow podcast episode link (Jan 28)</li>
+                <li>Healey pull-quote graphic</li>
+                <li>Stat: "Events = 2nd largest spend after payroll"</li>
+                <li>Client logos graphic (Google, Netflix, etc.)</li>
+              </ul>
+            </Card>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#818cf8">Suggested Users</Label>
+              <p style={{ fontSize: 13, color: "#cbd5e1", margin: 0, lineHeight: 1.6 }}><strong style={{ color: "#818cf8" }}>Wave 1:</strong> Sales + BD — this is their value prop in every conversation.<br /><br /><strong style={{ color: "#818cf8" }}>Wave 2:</strong> Marketing, leadership, partnerships. Debate-starting content = high engagement.</p>
+            </Card>
+          </div>
+        </div>
+      ),
+
+      // CAMPAIGN 3
+      () => (
+        <div style={{ height: "100%", background: "#0f0f1a", padding: "44px 56px", display: "flex", flexDirection: "column", overflow: "auto" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 6 }}>
+            <span style={{ background: "#f472b6", color: "#0f0f1a", fontSize: 12, fontWeight: 800, padding: "4px 12px", borderRadius: 6 }}>CAMPAIGN 03</span>
+            <span style={{ fontSize: 12, color: "#64748b" }}>Mar 24 – Apr 11, 2026</span>
+          </div>
+          <h2 style={{ fontSize: 28, fontWeight: 700, color: "#fff", margin: "0 0 6px" }}>Confessions of an Accidental Planner</h2>
+          <p style={{ fontSize: 14, color: "#f472b6", margin: "0 0 24px", fontWeight: 500 }}>You got tapped to plan the offsite — now what?</p>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#f472b6">Why This Campaign</Label>
+              <p style={{ fontSize: 13, color: "#cbd5e1", margin: 0, lineHeight: 1.6 }}>BoomPop's fastest-growing user segment is "accidental planners" — EAs and ops people who get the Slack message "can you handle the offsite?" 60% of corporate travel involves groups, and group booking is exponentially harder. This campaign speaks directly to the buyer.</p>
+            </Card>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#f472b6">Post Angles</Label>
+              <ul style={{ fontSize: 13, color: "#cbd5e1", margin: 0, paddingLeft: 16, lineHeight: 1.8 }}>
+                <li>Funny story about event planning gone wrong</li>
+                <li>The moment I realized group booking is broken</li>
+                <li>"3 things I wish every first-time planner knew"</li>
+                <li>Shoutout to the unsung EAs pulling off miracles</li>
+              </ul>
+            </Card>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#f472b6">Assets to Upload</Label>
+              <ul style={{ fontSize: 13, color: "#cbd5e1", margin: 0, paddingLeft: 16, lineHeight: 1.8 }}>
+                <li>BoomPop self-serve platform link</li>
+                <li>Brex partnership announcement</li>
+                <li>Client testimonial from an EA / ops person</li>
+                <li>"Before vs After BoomPop" graphic</li>
+              </ul>
+            </Card>
+            <Card style={{ borderRadius: 12, padding: "20px 22px" }}>
+              <Label color="#f472b6">Suggested Users</Label>
+              <p style={{ fontSize: 13, color: "#cbd5e1", margin: 0, lineHeight: 1.6 }}><strong style={{ color: "#f472b6" }}>Wave 1:</strong> Event planners + BoomPop Studio team — they talk to accidental planners every day.<br /><br /><strong style={{ color: "#f472b6" }}>Wave 2:</strong> Customer success, sales, marketing.</p>
+            </Card>
+          </div>
+        </div>
+      ),
+
+      // TIMELINE
+      () => (
+        <div style={{ height: "100%", background: "#0f0f1a", padding: "48px 56px", display: "flex", flexDirection: "column" }}>
+          <p style={{ fontSize: 12, letterSpacing: 3, color: "#818cf8", fontWeight: 600, textTransform: "uppercase", margin: "0 0 8px" }}>Timeline</p>
+          <h2 style={{ fontSize: 34, fontWeight: 700, color: "#fff", margin: "0 0 32px" }}>6-Week Rollout Calendar</h2>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "100px repeat(6, 1fr)", gap: 0, marginBottom: 8 }}>
+              <div />
+              {["W1\nMar 3","W2\nMar 10","W3\nMar 17","W4\nMar 24","W5\nMar 31","W6\nApr 7"].map((w,i) => (
+                <div key={i} style={{ textAlign: "center", fontSize: 11, color: "#64748b", whiteSpace: "pre-line", lineHeight: 1.4 }}>{w}</div>
+              ))}
+            </div>
+            {[
+              { label: "Campaign 1", color: "#34d399", start: 0, span: 3 },
+              { label: "Campaign 2", color: "#818cf8", start: 1, span: 3 },
+              { label: "Campaign 3", color: "#f472b6", start: 3, span: 3 },
+            ].map((c,i) => (
+              <div key={i} style={{ display: "grid", gridTemplateColumns: "100px repeat(6, 1fr)", gap: 0, marginBottom: 12, alignItems: "center" }}>
+                <span style={{ fontSize: 12, color: c.color, fontWeight: 600 }}>{c.label}</span>
+                {[0,1,2,3,4,5].map(w => (
+                  <div key={w} style={{ height: 36, padding: "0 2px" }}>
+                    {w >= c.start && w < c.start + c.span && (
+                      <div style={{ height: "100%", background: c.color + "22", border: "1px solid " + c.color + "44", borderRadius: w === c.start ? "8px 0 0 8px" : w === c.start + c.span - 1 ? "0 8px 8px 0" : 0, borderLeft: w === c.start ? "1px solid " + c.color + "44" : "none", borderRight: w === c.start + c.span - 1 ? "1px solid " + c.color + "44" : "none" }} />
+                    )}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+            {[
+              { phase: "Week 1–2", title: "Activate", desc: "Onboard 15–20 users. Launch Campaign 1. Riley voice interviews complete.", color: "#34d399" },
+              { phase: "Week 2–4", title: "Amplify", desc: "Campaign 2 launches. Overlap creates consistent feed presence. Track engagement.", color: "#818cf8" },
+              { phase: "Week 4–6", title: "Convert", desc: "Campaign 3 targets ICP directly. Measure inbound lift. Plan scale to 100 employees.", color: "#f472b6" },
+            ].map((p,i) => (
+              <Card key={i} style={{ borderRadius: 12, padding: "18px 20px" }}>
+                <span style={{ fontSize: 11, color: p.color, fontWeight: 700, letterSpacing: 1 }}>{p.phase}</span>
+                <h4 style={{ fontSize: 16, color: "#e2e8f0", margin: "6px 0", fontWeight: 700 }}>{p.title}</h4>
+                <p style={{ fontSize: 12, color: "#94a3b8", margin: 0, lineHeight: 1.5 }}>{p.desc}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      ),
+
+      // METRICS
+      () => (
+        <div style={{ height: "100%", background: "#0f0f1a", padding: "48px 56px", display: "flex", flexDirection: "column" }}>
+          <p style={{ fontSize: 12, letterSpacing: 3, color: "#818cf8", fontWeight: 600, textTransform: "uppercase", margin: "0 0 8px" }}>Success Metrics</p>
+          <h2 style={{ fontSize: 34, fontWeight: 700, color: "#fff", margin: "0 0 32px" }}>What We'll Track Together</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20, marginBottom: 28 }}>
+            {[
+              { metric: "Post Volume", target: "↑ 150%+", desc: "Total employee LinkedIn posts across BoomPop team vs. pre-RallyUp baseline", icon: "📊" },
+              { metric: "Engagement", target: "↑ 200%+", desc: "Total likes, comments, shares across all employee posts within campaigns", icon: "🔥" },
+              { metric: "Activation Rate", target: "60%+", desc: "% of enrolled employees who actually post at least once per campaign", icon: "⚡" },
+            ].map((m,i) => (
+              <Card key={i} style={{ padding: "28px 24px", textAlign: "center" }}>
+                <div style={{ fontSize: 32, marginBottom: 8 }}>{m.icon}</div>
+                <div style={{ fontSize: 28, fontWeight: 800, color: "#818cf8", marginBottom: 4 }}>{m.target}</div>
+                <h4 style={{ fontSize: 14, color: "#e2e8f0", margin: "0 0 8px", fontWeight: 700 }}>{m.metric}</h4>
+                <p style={{ fontSize: 12, color: "#94a3b8", margin: 0, lineHeight: 1.5 }}>{m.desc}</p>
+              </Card>
+            ))}
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, flex: 1 }}>
+            <div style={{ background: "rgba(52,211,153,0.06)", border: "1px solid rgba(52,211,153,0.15)", borderRadius: 12, padding: "22px 24px" }}>
+              <h4 style={{ fontSize: 13, color: "#34d399", margin: "0 0 10px", fontWeight: 700 }}>Leading Indicators (Weeks 1–3)</h4>
+              <ul style={{ fontSize: 13, color: "#cbd5e1", margin: 0, paddingLeft: 16, lineHeight: 1.8 }}>
+                <li>Riley onboarding completion rate</li>
+                <li>Posts published per campaign</li>
+                <li>Leaderboard engagement trends</li>
+                <li>Employee feedback on post quality</li>
+              </ul>
+            </div>
+            <div style={{ background: "rgba(129,140,248,0.06)", border: "1px solid rgba(129,140,248,0.15)", borderRadius: 12, padding: "22px 24px" }}>
+              <h4 style={{ fontSize: 13, color: "#818cf8", margin: "0 0 10px", fontWeight: 700 }}>Lagging Indicators (Weeks 4–6+)</h4>
+              <ul style={{ fontSize: 13, color: "#cbd5e1", margin: 0, paddingLeft: 16, lineHeight: 1.8 }}>
+                <li>Website traffic from LinkedIn referrals</li>
+                <li>Company LinkedIn page follower growth</li>
+                <li>Inbound demo requests attributed to posts</li>
+                <li>Top-performing posts & viral moments</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
+
+      // NEXT STEPS
+      () => (
+        <div style={{ height: "100%", background: "linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%)", padding: "48px 56px", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", top: -80, right: -80, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)" }} />
+          <p style={{ fontSize: 12, letterSpacing: 3, color: "#818cf8", fontWeight: 600, textTransform: "uppercase", margin: "0 0 8px" }}>Next Steps</p>
+          <h2 style={{ fontSize: 34, fontWeight: 700, color: "#fff", margin: "0 0 36px" }}>Let's Get BoomPop Posting</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 580 }}>
+            {[
+              { step: "1", title: "Thursday Onboarding", desc: "Mariel + team: company setup, brand voice, guardrails, content pillars in RallyUp", when: "Feb 26" },
+              { step: "2", title: "Employee Invites Go Out", desc: "15–20 users (sales + marketing) sign up & complete Riley voice interviews", when: "Feb 27 – Mar 2" },
+              { step: "3", title: "Campaign 1 Goes Live", desc: '"Spring Offsite Season" posts generated, reviewed by Mariel, distributed to team', when: "Mar 3" },
+              { step: "4", title: "Weekly Check-in", desc: "Review analytics, engagement, feedback. Adjust voice + content as needed", when: "Ongoing" },
+              { step: "5", title: "Scale Decision", desc: "Based on 6-week results → plan rollout to full 100-person team", when: "Mid-April" },
+            ].map((s,i) => (
+              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
+                <div style={{ minWidth: 36, height: 36, borderRadius: "50%", background: "rgba(129,140,248,0.15)", border: "1px solid rgba(129,140,248,0.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700, color: "#818cf8" }}>{s.step}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                    <h4 style={{ fontSize: 15, color: "#e2e8f0", margin: "0 0 2px", fontWeight: 700 }}>{s.title}</h4>
+                    <span style={{ fontSize: 11, color: "#64748b" }}>{s.when}</span>
+                  </div>
+                  <p style={{ fontSize: 13, color: "#94a3b8", margin: 0 }}>{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 40, textAlign: "center" }}>
+            <div style={{ width: 60, height: 3, background: "linear-gradient(90deg, #818cf8, #ec4899)", borderRadius: 2, margin: "0 auto 16px" }} />
+            <p style={{ fontSize: 14, color: "#94a3b8", margin: 0 }}>Let's get BoomPop's team activated and posting 🚀</p>
+          </div>
+        </div>
+      ),
+    ];
+
+    function Deck() {
+      const [cur, setCur] = useState(0);
+      const total = slides.length;
+      const Slide = slides[cur];
+      return (
+        <div style={{ width: "100%", maxWidth: 960, margin: "0 auto" }}>
+          <div style={{ borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}>
+            <div style={{ height: 540, position: "relative" }}>
+              <Slide />
+            </div>
+            <div style={{ background: "#0a0a14", padding: "12px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+              <button onClick={() => setCur(Math.max(0, cur - 1))} disabled={cur === 0} style={{ background: cur === 0 ? "rgba(255,255,255,0.03)" : "rgba(129,140,248,0.12)", border: "1px solid rgba(255,255,255,0.08)", color: cur === 0 ? "#475569" : "#818cf8", padding: "8px 20px", borderRadius: 8, cursor: cur === 0 ? "default" : "pointer", fontSize: 13, fontWeight: 600 }}>← Back</button>
+              <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                {slides.map((_,i) => (
+                  <div key={i} onClick={() => setCur(i)} style={{ width: i === cur ? 24 : 8, height: 8, borderRadius: 4, background: i === cur ? "#818cf8" : "rgba(255,255,255,0.1)", cursor: "pointer", transition: "all 0.2s" }} />
+                ))}
+              </div>
+              <button onClick={() => setCur(Math.min(total - 1, cur + 1))} disabled={cur === total - 1} style={{ background: cur === total - 1 ? "rgba(255,255,255,0.03)" : "rgba(129,140,248,0.12)", border: "1px solid rgba(255,255,255,0.08)", color: cur === total - 1 ? "#475569" : "#818cf8", padding: "8px 20px", borderRadius: 8, cursor: cur === total - 1 ? "default" : "pointer", fontSize: 13, fontWeight: 600 }}>Next →</button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<Deck />);
+  </script>
+</body>
+</html>
